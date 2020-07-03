@@ -1,0 +1,3 @@
+[submodule "src/iai_robots"]
+	path = src/iai_robots
+	url = git@github.com:HoangGiang93/iai_robots.git
