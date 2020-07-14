@@ -146,7 +146,7 @@
         <geometry>
             <!-- <mesh -->
             <mesh
-            filename="package://iai_donbot/meshes/iai_boxy_base_2/base.stl" />
+            filename="package://iai_donbot_description/meshes/iai_boxy_base_2/base.stl" />
         </geometry>
         <material
             name="">
@@ -159,7 +159,7 @@
             xyz="0 0 0"
             rpy="0 0 0" />
         <geometry>
-            <mesh filename="package://iai_donbot/meshes/iai_boxy_base_2/base_lowres.stl" />
+            <mesh filename="package://iai_donbot_description/meshes/iai_boxy_base_2/base_lowres.stl" />
         </geometry>
         </collision>
     </link>

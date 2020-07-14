@@ -16,7 +16,7 @@
       <visual>
         <origin rpy="0 0 0" xyz="0 0 0"/>
         <geometry>
-          <mesh filename="package://iai_donbot/meshes/iai_kms_40/adapter_plate_iso50_kms40_weiss.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://iai_donbot_description/meshes/iai_kms_40/adapter_plate_iso50_kms40_weiss.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <material name="Grey"/>
       </visual>
@@ -50,7 +50,7 @@
       <visual>
         <origin rpy="0 0 0" xyz="0 0 0"/>
         <geometry>
-          <mesh filename="package://iai_donbot/meshes/iai_kms_40/kms40_simple.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://iai_donbot_description/meshes/iai_kms_40/kms40_simple.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <material name="Grey"/>
       </visual>

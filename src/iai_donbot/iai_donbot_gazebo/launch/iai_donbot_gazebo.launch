@@ -5,7 +5,7 @@
     <arg name="debug"      default="false"/>
     <arg name="gui"        default="true"/>
     <arg name="rate"       default="125" />
-    <arg name="world_name" default="$(find iai_donbot)/worlds/iai_donbot_world.world" />
+    <arg name="world_name" default="$(find iai_donbot_gazebo)/worlds/iai_donbot_world.world" />
 
     <!-- Start up simulated world -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -15,11 +15,11 @@
         <arg name="gui"        value="$(arg gui)"/>
     </include>
 
-    <param name="robot_description" command="$(find xacro)/xacro $(find iai_donbot)/robots/iai_donbot_gazebo.xacro" />
+    <param name="robot_description" command="$(find xacro)/xacro $(find iai_donbot_gazebo)/robots/iai_donbot_gazebo.xacro" />
     
     <node pkg="gazebo_ros" name="urdf_spawner" type="spawn_model" respawn="false" output="screen"
         args="-urdf -param robot_description -model iai_donbot">
     </node>
 
-    <include file="$(find iai_donbot)/launch/iai_donbot_control.launch" />
+    <include file="$(find iai_donbot_gazebo)/launch/iai_donbot_control.launch" />
 </launch>

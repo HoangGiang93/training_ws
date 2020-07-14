@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro" name="iai_donbot">
-    <xacro:include filename="$(find iai_donbot)/robots/iai_donbot.xacro"/>
+    <xacro:include filename="$(find iai_donbot_description)/robots/iai_donbot.xacro"/>
     <xacro:iai_donbot />
-    <xacro:include filename="$(find iai_donbot)/robots/iai_donbot.transmission.xacro"/>
+    <xacro:include filename="$(find iai_donbot_gazebo)/robots/iai_donbot.transmission.xacro"/>
     <xacro:ur_arm_transmission prefix="ur5_"/>
 
     <!-- Load joint controller configurations from YAML file to parameter server -->
-    <rosparam file="$(find iai_donbot)/config/iai_donbot_control.yaml" command="load"/>   
+    <rosparam file="$(find iai_donbot_gazebo)/config/iai_donbot_control.yaml" command="load"/>   
 
     <gazebo reference="">
         <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">

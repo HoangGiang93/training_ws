@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
-  <xacro:include filename="$(find iai_donbot)/robots/include/kms_40.urdf.xacro"/>
-  <xacro:include filename="$(find iai_donbot)/robots/include/adapter_fwa050_wsg50.urdf.xacro"/>
-  <xacro:include filename="$(find iai_donbot)/robots/include/adapter_kms40_fwk050.urdf.xacro"/>
-  <xacro:include filename="$(find iai_donbot)/robots/include/fwk_fwa_050.urdf.xacro"/>
-  <xacro:include filename="$(find iai_donbot)/robots/include/ur5.urdf.xacro" />
-  <xacro:include filename="$(find iai_donbot)/robots/iai_donbot_gripper.xacro"/> 
-  <xacro:include filename="$(find iai_donbot)/robots/iai_donbot_base.xacro"/> 
+  <xacro:include filename="$(find iai_donbot_description)/robots/include/kms_40.urdf.xacro"/>
+  <xacro:include filename="$(find iai_donbot_description)/robots/include/adapter_fwa050_wsg50.urdf.xacro"/>
+  <xacro:include filename="$(find iai_donbot_description)/robots/include/adapter_kms40_fwk050.urdf.xacro"/>
+  <xacro:include filename="$(find iai_donbot_description)/robots/include/fwk_fwa_050.urdf.xacro"/>
+  <xacro:include filename="$(find iai_donbot_description)/robots/include/ur5.urdf.xacro" />
+  <xacro:include filename="$(find iai_donbot_description)/robots/include/iai_donbot_gripper.xacro"/> 
+  <xacro:include filename="$(find iai_donbot_description)/robots/include/iai_donbot_base.xacro"/> 
 
   <material name="gray">
     <color rgba="0.56 0.67 0.67 1"/>
@@ -45,7 +45,7 @@
     <link name="kms_mounting_plate">
       <visual>
         <geometry>
-          <mesh filename="package://iai_donbot/meshes/iai_table_robot/adapter_plate_iso50_kms40_weiss.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://iai_donbot_description/meshes/iai_table_robot/adapter_plate_iso50_kms40_weiss.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <material name="gray"/>
       </visual>
@@ -80,13 +80,13 @@
     <link name="camera_holder_link">
       <visual>
         <geometry>
-          <mesh filename="package://iai_donbot/meshes/iai_refills_camera/refills_camera_holder_and_camera.stl" scale="1 1 1"/>
+          <mesh filename="package://iai_donbot_description/meshes/iai_refills_camera/refills_camera_holder_and_camera.stl" scale="1 1 1"/>
         </geometry>
         <material name="gray"/>
       </visual>
       <collision>
         <geometry>
-          <mesh filename="package://iai_donbot/meshes/iai_refills_camera/refills_camera_holder_and_camera.stl" scale="1 1 1"/>
+          <mesh filename="package://iai_donbot_description/meshes/iai_refills_camera/refills_camera_holder_and_camera.stl" scale="1 1 1"/>
         </geometry>
         <material name="gray"/>
       </collision>
