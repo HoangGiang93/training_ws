@@ -1,0 +1,18 @@
+<launch>
+
+    <node pkg="tf2_ros" type="buffer_server"
+        name="buffer_server" output="screen">
+    </node>
+
+    <!-- robot -->
+    <param name="robot_description" command="$(find xacro)/xacro $(find iai_donbot_unreal)/urdf/iai_donbot_unreal.xacro" />
+        
+    <rosparam command="load" file="$(find iai_donbot_unreal)/config/iai_donbot_unreal.yaml" />
+
+    <!-- convert joint states to TF transforms for rviz, etc -->
+    <node pkg="robot_state_publisher" name="robot_state_publisher" type="robot_state_publisher"
+        respawn="false" output="screen">
+        <remap from="/joint_states" to="/iai_donbot/joint_states" />
+    </node>
+
+</launch>

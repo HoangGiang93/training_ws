@@ -1,5 +1,5 @@
 <launch>
-  <param name="robot_description" command="$(find xacro)/xacro '$(find iai_donbot)/robots/iai_donbot_with_refills_finger_spawn.xacro'" />
+  <param name="robot_description" command="$(find xacro)/xacro '$(find iai_donbot_description)/urdf/iai_donbot_with_refills_finger_spawn.xacro'" />
 
   <arg name="gui" default="True" />
 
@@ -19,5 +19,5 @@
     name="rviz"
     pkg="rviz"
     type="rviz"
-    args="-d $(find iai_donbot)/rviz_config/iai_donbot.rviz" />
+    args="-d $(find iai_donbot_description)/rviz_config/iai_donbot.rviz" />
 </launch>

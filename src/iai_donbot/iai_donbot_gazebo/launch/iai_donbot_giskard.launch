@@ -1,0 +1,33 @@
+<launch>
+
+    <arg name="gui" default="False"/>
+    
+    <node pkg="giskardpy" type="joint_trajectory_splitter.py" name="joint_trajectory_splitter" output="screen">
+        <rosparam param="state_topics">
+            - /iai_donbot/whole_body_controller/base/state
+            - /iai_donbot/whole_body_controller/body/state
+        </rosparam>
+        <rosparam param="client_topics">
+            - /iai_donbot/whole_body_controller/base/follow_joint_trajectory
+            - /iai_donbot/whole_body_controller/body/follow_joint_trajectory
+        </rosparam>
+    </node>
+
+    <node pkg="giskardpy" type="giskard_trees.py" name="giskard" output="screen">
+        <param name="path_to_data_folder" value="$(find giskardpy)/data" />
+        <param name="enable_gui" value="$(arg gui)"/>
+        <rosparam command="load" file="$(find giskardpy)/config/donbot.yaml" />
+        <remap from="/joint_states" to="/iai_donbot/joint_states" />
+    </node>
+
+    <node pkg="giskardpy" type="interactive_marker.py" name="giskard_interactive_marker" output="screen">
+        <rosparam param="enable_self_collision">False</rosparam>
+        <rosparam param="interactive_marker_chains">
+            - [odom, base_footprint]
+            - [base_link, gripper_tool_frame]
+        </rosparam>
+    </node>
+
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find iai_donbot_gazebo)/rviz_config/iai_donbot.rviz" />
+
+</launch>

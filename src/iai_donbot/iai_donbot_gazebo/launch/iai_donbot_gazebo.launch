@@ -15,7 +15,7 @@
         <arg name="gui"        value="$(arg gui)"/>
     </include>
 
-    <param name="robot_description" command="$(find xacro)/xacro $(find iai_donbot_gazebo)/robots/iai_donbot_gazebo.xacro" />
+    <param name="robot_description" command="$(find xacro)/xacro $(find iai_donbot_gazebo)/urdf/iai_donbot_gazebo.xacro" />
     
     <node pkg="gazebo_ros" name="urdf_spawner" type="spawn_model" respawn="false" output="screen"
         args="-urdf -param robot_description -model iai_donbot">
