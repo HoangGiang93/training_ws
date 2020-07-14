@@ -1,0 +1,17 @@
+<launch>
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find iai_donbot)/config/iai_donbot_control.yaml" command="load"/>   
+
+  <!-- load the trajectory controller -->
+  <node pkg="controller_manager" name="controller_spawner" type="spawner" respawn="false"
+    output="screen" ns="/iai_donbot" args="whole_body_controller/base whole_body_controller/body whole_body_controller/gripper
+    joint_state_controller"/>
+
+  <!-- convert joint states to TF transforms for rviz, etc -->
+  <node pkg="robot_state_publisher" name="robot_state_publisher" type="robot_state_publisher"
+    respawn="false" output="screen">
+    <remap from="/joint_states" to="/iai_donbot/joint_states" />
+  </node>
+
+</launch>

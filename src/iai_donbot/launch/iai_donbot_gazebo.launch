@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- Launch file parameters -->
+    <arg name="paused"     default="true"/>
+    <arg name="debug"      default="false"/>
+    <arg name="gui"        default="true"/>
+    <arg name="rate"       default="125" />
+    <arg name="world_name" default="$(find iai_donbot)/worlds/iai_donbot_world.world" />
+
+    <!-- Start up simulated world -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(arg world_name)"/>
+        <arg name="paused"     value="$(arg paused)"/>
+        <arg name="debug"      value="$(arg debug)"/>
+        <arg name="gui"        value="$(arg gui)"/>
+    </include>
+
+    <param name="robot_description" command="$(find xacro)/xacro $(find iai_donbot)/robots/iai_donbot_gazebo.xacro" />
+    
+    <node pkg="gazebo_ros" name="urdf_spawner" type="spawn_model" respawn="false" output="screen"
+        args="-urdf -param robot_description -model iai_donbot">
+    </node>
+
+    <include file="$(find iai_donbot)/launch/iai_donbot_control.launch" />
+</launch>
