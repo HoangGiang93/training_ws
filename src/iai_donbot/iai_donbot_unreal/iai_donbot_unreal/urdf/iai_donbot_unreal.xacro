@@ -2,5 +2,8 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="iai_donbot">
 
   <xacro:include filename="$(find iai_donbot_description)/urdf/iai_donbot.xacro"/>
+  
+  <!--Add odom-->
+  <xacro:include filename="$(find iai_donbot_description)/urdf/include/iai_donbot_odom.xacro"/> 
 
 </robot>

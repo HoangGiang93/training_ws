@@ -1,5 +1,5 @@
 <launch>
-    <param name="giskard/robot_description" command="$(find xacro)/xacro $(find iai_donbot_unreal)/urdf/iai_donbot_unreal.xacro"/>
+    <!--param name="giskard/robot_description" command="$(find xacro)/xacro $(find iai_donbot_unreal)/urdf/iai_donbot_unreal.xacro"/-->
 
     <!--node pkg="giskardpy" type="tf_base_joint_state_publisher.py" name="base_joint_state_publisher" output="screen">
         <param name="odom_x_joint" value="odom_x_joint" />
@@ -26,17 +26,19 @@
         <param name="use_gui" value="False"/>
         <remap from="/joint_states" to="giskard/joint_states"/>
         <remap from="robot_description" to="giskard/robot_description"/>
-    </node>
+    </node-->
 
-    <include file="$(find omni_pose_follower)/launch/omni_pose_follower.launch"/-->
+    <include file="$(find omni_pose_follower)/launch/omni_pose_follower.launch"/>
 
     <arg name="gui" default="False"/>
     
     <node pkg="giskardpy" type="joint_trajectory_splitter.py" name="joint_trajectory_splitter" output="screen">
         <rosparam param="state_topics">
+            - /iai_donbot/whole_body_controller/base/state
             - /iai_donbot/whole_body_controller/body/state
         </rosparam>
         <rosparam param="client_topics">
+            - /iai_donbot/whole_body_controller/base/follow_joint_trajectory
             - /iai_donbot/whole_body_controller/body/follow_joint_trajectory
         </rosparam>
     </node>
@@ -51,8 +53,10 @@
     <node pkg="giskardpy" type="interactive_marker.py" name="giskard_interactive_marker" output="screen">
         <rosparam param="enable_self_collision">False</rosparam>
         <rosparam param="interactive_marker_chains">
-            - [base_link, ur5_wrist_3_link]
+            - [odom, ur5_wrist_3_link]
         </rosparam>
     </node>
+
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find iai_donbot_unreal)/rviz_config/iai_donbot.rviz" />
 
 </launch>
