@@ -1,37 +1,7 @@
 <launch>
-    <!--param name="giskard/robot_description" command="$(find xacro)/xacro $(find iai_donbot_unreal)/urdf/iai_donbot_unreal.xacro"/-->
+    <!--Load the omni_pose_follower-->
+    <include file="$(find omni_pose_follower)/launch/iai_donbot_omni_pose_follower.launch"/>
 
-    <!--node pkg="giskardpy" type="tf_base_joint_state_publisher.py" name="base_joint_state_publisher" output="screen">
-        <param name="odom_x_joint" value="odom_x_joint" />
-        <param name="odom_y_joint" value="odom_y_joint" />
-        <param name="odom_z_joint" value="odom_z_joint" />
-        <param name="odom" value="odom"/>
-        <param name="base_footprint" value="base_footprint"/>
-        <remap from="/joint_states" to="/base/joint_states"/>
-    </node>
-
-    <node pkg="topic_tools" name="remap_joint_states" type="relay" args="joint_states body/joint_states"/>
-
-    <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" output="screen">
-        <rosparam param="source_list">
-            - base/joint_states
-            - iai_donbot/joint_states
-        </rosparam>
-        <rosparam param="zeros">
-            'odom_x_joint': 0.0
-            'odom_y_joint': 0.0
-            'odom_z_joint': 0.0
-        </rosparam>
-        <param name="rate" value="120"/>
-        <param name="use_gui" value="False"/>
-        <remap from="/joint_states" to="giskard/joint_states"/>
-        <remap from="robot_description" to="giskard/robot_description"/>
-    </node-->
-
-    <include file="$(find omni_pose_follower)/launch/omni_pose_follower.launch"/>
-
-    <arg name="gui" default="False"/>
-    
     <node pkg="giskardpy" type="joint_trajectory_splitter.py" name="joint_trajectory_splitter" output="screen">
         <rosparam param="state_topics">
             - /iai_donbot/whole_body_controller/base/state
@@ -43,6 +13,7 @@
         </rosparam>
     </node>
 
+    <arg name="gui" default="False"/>
     <node pkg="giskardpy" type="giskard_trees.py" name="giskard" output="screen">
         <param name="path_to_data_folder" value="$(find giskardpy)/data" />
         <param name="enable_gui" value="$(arg gui)"/>
@@ -53,8 +24,14 @@
     <node pkg="giskardpy" type="interactive_marker.py" name="giskard_interactive_marker" output="screen">
         <rosparam param="enable_self_collision">False</rosparam>
         <rosparam param="interactive_marker_chains">
-            - [odom, ur5_wrist_3_link]
+            - [odom, gripper_tool_frame]
         </rosparam>
+    </node>
+
+    <!-- convert joint states to TF transforms for rviz, etc -->
+    <node pkg="robot_state_publisher" name="robot_state_publisher" type="robot_state_publisher"
+        respawn="false" output="screen">
+        <remap from="/joint_states" to="/iai_donbot/joint_states" />
     </node>
 
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find iai_donbot_unreal)/rviz_config/iai_donbot.rviz" />
