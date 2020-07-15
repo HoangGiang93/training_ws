@@ -22,4 +22,5 @@
     </node>
 
     <include file="$(find iai_donbot_gazebo)/launch/iai_donbot_control.launch" />
+    
 </launch>
