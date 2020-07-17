@@ -3,4 +3,4 @@ devel/
 */.*
 .*
 !/.gitignore
-
+src/training_ws.*
