@@ -427,13 +427,14 @@ private:
     header.stamp.fromNSec((ros::Time::now() - ros::Time().fromNSec(now - packet.header.timestampCapture)).toNSec());
     OUT_INFO("capture delay: " << (now - packet.header.timestampCapture) / 1000000.0 << " ms.");
 
-    tf::Vector3 translationLink(packet.header.translation.x, packet.header.translation.y, packet.header.translation.z);
+    tf::Vector3 translationLink(packet.header.translation.x+0.25525, packet.header.translation.y+0.225, packet.header.translation.z);
+    //tf::Vector3 translationLink(packet.header.translation.x-0.002956, packet.header.translation.y+0.20424, packet.header.translation.z-0.27213);
     tf::Quaternion rotationLink(packet.header.rotation.x, packet.header.rotation.y, packet.header.rotation.z, packet.header.rotation.w);
     broadcaster.sendTransform(tf::StampedTransform(tf::Transform(rotationLink, translationLink), header.stamp, "map", baseNameTF + UV_TF_LINK));
 
     tf::Vector3 translationCamera(0.0, 0.0, 0.0);
     tf::Quaternion rotationCamera;
-    rotationCamera.setEuler(90.0 * M_PI / 180.0, 0.0, -90.0 * M_PI / 180.0);
+    rotationCamera.setEuler(90.0 * M_PI / 180.0, 0.0, 90.0 * M_PI / 180.0);
     broadcaster.sendTransform(tf::StampedTransform(tf::Transform(rotationCamera, translationCamera), header.stamp, baseNameTF + UV_TF_LINK, baseNameTF + UV_TF_OPT_FRAME));
 
     if(status[CAMERA_INFO])
@@ -496,6 +497,8 @@ private:
 
   void setCameraInfo(sensor_msgs::CameraInfoPtr msgCameraInfo) const
   {
+    msgCameraInfo->header.frame_id = baseNameTF + UV_TF_OPT_FRAME;
+
     double halfFOVX = packet.header.fieldOfViewX * M_PI / 360.0;
     double halfFOVY = packet.header.fieldOfViewY * M_PI / 360.0;
     const double cX = packet.header.width / 2.0;
