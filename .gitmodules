@@ -1,3 +1,0 @@
-[submodule "src/iai_donbot/iai_donbot_unreal/unreal_vision_bridge"]
-	path = src/iai_donbot/iai_donbot_unreal/unreal_vision_bridge
-	url = git@github.com:sherpa-eu/unreal_vision_bridge.git
