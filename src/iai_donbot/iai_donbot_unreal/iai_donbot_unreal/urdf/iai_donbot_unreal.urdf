@@ -35,6 +35,12 @@
       </geometry>
       <material name="White"/>
     </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+    </collision>
   </link>
   <!-- JOINT to define base_footprint -->
   <joint name="base_footprint_joint" type="fixed">
@@ -117,7 +123,6 @@
       </geometry>
     </collision>
   </link>
-  <!-- JOINT to define base_footprint -->
   <joint name="plate_joint" type="fixed">
     <origin rpy="0 0 0" xyz="-0.300 -0.230 0.460"/>
     <parent link="base_link"/>
