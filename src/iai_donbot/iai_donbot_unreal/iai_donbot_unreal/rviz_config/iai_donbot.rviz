@@ -9,6 +9,7 @@ Panels:
         - /InteractiveMarkers1
         - /Camera1
         - /TF1
+        - /TF1/Frames1
         - /TF1/Tree1
       Splitter Ratio: 0.5759416818618774
     Tree Height: 532
@@ -312,19 +313,176 @@ Visualization Manager:
         Value: true
       Zoom Factor: 1
     - Class: rviz/TF
-      Enabled: false
+      Enabled: true
       Frame Timeout: 15
       Frames:
         All Enabled: false
+        adapter_fwa050_wsg50_frame_in:
+          Value: false
+        adapter_fwa050_wsg50_frame_out:
+          Value: false
+        adapter_iso50_kms40_frame_in:
+          Value: false
+        adapter_iso50_kms40_frame_out:
+          Value: false
+        adapter_kms40_fwk050_frame_in:
+          Value: false
+        adapter_kms40_fwk050_frame_out:
+          Value: false
+        base_footprint:
+          Value: false
+        base_link:
+          Value: false
+        camera_holder_link:
+          Value: false
+        camera_link:
+          Value: true
+        charger:
+          Value: false
+        e_stop:
+          Value: false
+        fwk_fwa_050_frame_in:
+          Value: false
+        fwk_fwa_050_frame_out:
+          Value: false
+        gripper_base_link:
+          Value: false
+        gripper_finger_left_link:
+          Value: false
+        gripper_finger_right_link:
+          Value: false
+        gripper_gripper_left_link:
+          Value: false
+        gripper_gripper_right_link:
+          Value: false
+        gripper_tool_frame:
+          Value: false
+        kms40_frame_in:
+          Value: false
+        kms40_frame_out:
+          Value: false
+        kms_mounting_plate:
+          Value: false
+        laser_reference_back:
+          Value: false
+        laser_reference_front:
+          Value: false
+        map:
+          Value: false
+        odom:
+          Value: false
+        odom_x_frame:
+          Value: false
+        odom_y_frame:
+          Value: false
+        plate:
+          Value: false
+        rs_camera_link:
+          Value: false
+        switches:
+          Value: false
+        unreal_vison_link:
+          Value: false
+        unreal_vison_optical_frame:
+          Value: true
+        ur5_base:
+          Value: false
+        ur5_base_link:
+          Value: false
+        ur5_ee_link:
+          Value: false
+        ur5_forearm_link:
+          Value: false
+        ur5_shoulder_link:
+          Value: false
+        ur5_tool0:
+          Value: false
+        ur5_touchpad:
+          Value: false
+        ur5_upper_arm_link:
+          Value: false
+        ur5_wrist_1_link:
+          Value: false
+        ur5_wrist_2_link:
+          Value: false
+        ur5_wrist_3_link:
+          Value: false
+        wlan:
+          Value: false
+        wrist_collision:
+          Value: false
       Marker Scale: 1
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: true
       Tree:
-        {}
+        map:
+          odom:
+            odom_x_frame:
+              odom_y_frame:
+                base_footprint:
+                  base_link:
+                    charger:
+                      {}
+                    e_stop:
+                      {}
+                    laser_reference_back:
+                      {}
+                    laser_reference_front:
+                      {}
+                    plate:
+                      {}
+                    switches:
+                      {}
+                    ur5_base_link:
+                      ur5_base:
+                        {}
+                      ur5_shoulder_link:
+                        ur5_upper_arm_link:
+                          ur5_forearm_link:
+                            ur5_wrist_1_link:
+                              ur5_wrist_2_link:
+                                ur5_wrist_3_link:
+                                  ur5_ee_link:
+                                    kms_mounting_plate:
+                                      adapter_iso50_kms40_frame_in:
+                                        adapter_iso50_kms40_frame_out:
+                                          kms40_frame_in:
+                                            kms40_frame_out:
+                                              adapter_kms40_fwk050_frame_in:
+                                                adapter_kms40_fwk050_frame_out:
+                                                  fwk_fwa_050_frame_in:
+                                                    fwk_fwa_050_frame_out:
+                                                      adapter_fwa050_wsg50_frame_in:
+                                                        adapter_fwa050_wsg50_frame_out:
+                                                          gripper_base_link:
+                                                            camera_holder_link:
+                                                              {}
+                                                            camera_link:
+                                                              rs_camera_link:
+                                                                {}
+                                                            gripper_gripper_left_link:
+                                                              gripper_finger_left_link:
+                                                                {}
+                                                            gripper_gripper_right_link:
+                                                              gripper_finger_right_link:
+                                                                {}
+                                                            gripper_tool_frame:
+                                                              {}
+                                                wrist_collision:
+                                                  {}
+                                  ur5_tool0:
+                                    {}
+                    ur5_touchpad:
+                      {}
+                    wlan:
+                      {}
+          unreal_vison_link:
+            unreal_vison_optical_frame:
+              {}
       Update Interval: 0
-      Value: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -360,18 +518,18 @@ Visualization Manager:
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 5.5039777755737305
-        Y: 6.113811492919922
-        Z: 0.5745545029640198
+        X: 4.801944732666016
+        Y: 6.084227085113525
+        Z: 0.7545260787010193
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.4947972297668457
+      Pitch: 1.3097964525222778
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 3.1777353286743164
+      Yaw: 6.037758827209473
     Saved: ~
 Window Geometry:
   Camera:

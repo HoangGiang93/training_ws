@@ -13,6 +13,11 @@
         </rosparam>
     </node>
 
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+        <rosparam param="source_list">["/iai_donbot/base/joint_states", "/iai_donbot/body/joint_states"]</rosparam>
+        <remap from="/joint_states" to="/iai_donbot/joint_states" />
+    </node>
+
     <arg name="gui" default="False"/>
     <node pkg="giskardpy" type="giskard_trees.py" name="giskard" output="screen">
         <param name="path_to_data_folder" value="$(find giskardpy)/data" />
@@ -24,6 +29,7 @@
     <node pkg="giskardpy" type="interactive_marker.py" name="giskard_interactive_marker" output="screen">
         <rosparam param="enable_self_collision">False</rosparam>
         <rosparam param="interactive_marker_chains">
+            - [odom, base_footprint]
             - [odom, gripper_tool_frame]
         </rosparam>
     </node>
