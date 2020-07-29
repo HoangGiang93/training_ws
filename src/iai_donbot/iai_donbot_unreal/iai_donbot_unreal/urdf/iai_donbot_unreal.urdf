@@ -538,12 +538,12 @@
   </link>
   <!-- GRIPPER LEFT -->
   <joint name="gripper_base_gripper_left_joint" type="prismatic">
-    <limit effort="10.0" lower="-0.051" upper="0" velocity="0.42"/>
+    <limit effort="10.0" lower="0" upper="0.051" velocity="0.42"/>
     <origin rpy="0 0 0" xyz="-0.0040 0 0"/>
     <parent link="gripper_base_link"/>
     <child link="gripper_gripper_left_link"/>
     <dynamics damping="1" friction="1"/>
-    <axis xyz="1 0 0"/>
+    <axis xyz="-1 0 0"/>
   </joint>
   <link name="gripper_gripper_left_link">
     <inertial>
