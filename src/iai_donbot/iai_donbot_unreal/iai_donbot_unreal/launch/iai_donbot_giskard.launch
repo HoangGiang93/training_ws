@@ -30,7 +30,7 @@
         <rosparam param="enable_self_collision">False</rosparam>
         <rosparam param="interactive_marker_chains">
             - [odom, base_footprint]
-            - [odom, gripper_tool_frame]
+            - [base_footprint, gripper_tool_frame]
         </rosparam>
     </node>
 
