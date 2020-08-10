@@ -1,0 +1,6 @@
+[submodule "src/iai_donbot/iai_donbot_unreal/iai_maps"]
+	path = src/iai_donbot/iai_donbot_unreal/iai_maps
+	url = git@github.com:code-iai/iai_maps.git
+[submodule "src/iai_donbot/iai_donbot_unreal/navigation"]
+	path = src/iai_donbot/iai_donbot_unreal/navigation
+	url = git@github.com:ros-planning/navigation.git

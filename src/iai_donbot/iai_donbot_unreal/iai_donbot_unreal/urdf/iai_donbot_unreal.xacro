@@ -6,10 +6,4 @@
   <!--Add odom-->
   <xacro:include filename="$(find iai_donbot_description)/urdf/include/iai_donbot_odom.xacro"/>
 
-  <link name="map"/>
-  <joint name="map_joint" type="fixed">
-    <parent link="map"/>
-    <child link="odom"/>
-  </joint>
-
 </robot>

@@ -427,7 +427,7 @@ private:
     header.stamp.fromNSec((ros::Time::now() - ros::Time().fromNSec(now - packet.header.timestampCapture)).toNSec());
     OUT_INFO("capture delay: " << (now - packet.header.timestampCapture) / 1000000.0 << " ms.");
 
-    tf::Vector3 translationLink(packet.header.translation.x, packet.header.translation.y, packet.header.translation.z);
+    tf::Vector3 translationLink(packet.header.translation.x, packet.header.translation.y, packet.header.translation.z-0.02);
     tf::Quaternion rotationLink(packet.header.rotation.x, packet.header.rotation.y, packet.header.rotation.z, packet.header.rotation.w);
     broadcaster.sendTransform(tf::StampedTransform(tf::Transform(rotationLink, translationLink), header.stamp, "map", baseNameTF + UV_TF_LINK));
 
