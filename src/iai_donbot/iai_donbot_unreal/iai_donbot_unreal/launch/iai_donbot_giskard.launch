@@ -49,13 +49,19 @@
     <arg name="navigation_map" default="$(find iai_refills_lab)/maps/refills_lab.yaml" />
     <node name="map_server" pkg="map_server" type="map_server" args="$(arg navigation_map)" />
 
-    <arg name="initial_pose_x" value="-1.0"/> <arg name="initial_pose_y" value="10.0"/> <arg name="initial_pose_z" value="0.0"/>
     <node pkg="amcl" type="amcl" name="amcl">
         <!-- Publish scans from best pose at a max of 10 Hz -->
         <remap from="scan" to="/base_scan"/>
         <param name="base_frame_id" value="base_footprint"/>
         <param name="odom_frame_id" value="odom"/>
         <param name="global_frame_id" value="map"/>
+
+        <param name="initial_pose_x" value="5.12"/>
+        <param name="initial_pose_y" value="6.85"/>
+        <param name="initial_pose_a" value="0.0"/>
+        <param name="initial_cov_xx" value="0.0"/>
+        <param name="initial_cov_yy" value="0.0"/>
+        <param name="initial_cov_aa" value="0.0"/>
 
         <param name="odom_model_type" value="omni-corrected"/>
         <param name="transform_tolerance" value="0.2" />
@@ -89,5 +95,5 @@
         <param name="laser_min_range" value="0.1"/>
         <param name="laser_max_range" value="30.0"/>
     </node>
-    
+
 </launch>
