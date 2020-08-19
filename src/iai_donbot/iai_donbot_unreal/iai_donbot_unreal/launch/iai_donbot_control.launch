@@ -1,0 +1,13 @@
+<launch>
+    <!-- giskard, rviz -->
+    <include file="$(find iai_donbot_unreal)/launch/iai_donbot_giskard.launch" />
+
+    <!-- camera 2D, 3D -->
+    <include file="$(find unreal_vision_bridge)/launch/iai_donbot_unreal_vision_bridge.launch" />
+
+    <!-- localisation -->
+    <include file="$(find iai_donbot_unreal)/launch/iai_donbot_acml.launch" />
+
+    <!-- navigation -->
+    <include file="$(find iai_donbot_unreal)/launch/iai_donbot_move_base.launch" />
+</launch>

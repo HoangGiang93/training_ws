@@ -1,11 +1,13 @@
 <launch>
 
+    <!-- rosbridge -->
+    <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch" />
+
     <!--Action server for the actionlib-based implementation of tf2_ros::BufferInterface-->
     <node pkg="tf2_ros" type="buffer_server" name="buffer_server" output="screen" />
 
     <!-- robot -->
     <param name="robot_description" command="$(find xacro)/xacro $(find iai_donbot_unreal)/urdf/iai_donbot_unreal.xacro" />
-        
     <rosparam command="load" file="$(find iai_donbot_unreal)/config/iai_donbot_unreal.yaml" />
 
 </launch>

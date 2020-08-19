@@ -1,50 +1,4 @@
-<launch>
-    <!--Load the omni_pose_follower-->
-    <include file="$(find omni_pose_follower)/launch/iai_donbot_omni_pose_follower.launch"/>
-
-    <node pkg="giskardpy" type="joint_trajectory_splitter.py" name="joint_trajectory_splitter" output="screen">
-        <rosparam param="state_topics">
-            - /iai_donbot/whole_body_controller/base/state
-            - /iai_donbot/whole_body_controller/body/state
-        </rosparam>
-        <rosparam param="client_topics">
-            - /iai_donbot/whole_body_controller/base/follow_joint_trajectory
-            - /iai_donbot/whole_body_controller/body/follow_joint_trajectory
-        </rosparam>
-    </node>
-
-    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
-        <rosparam param="source_list">["/iai_donbot/base/joint_states", "/iai_donbot/body/joint_states"]</rosparam>
-        <remap from="/joint_states" to="/iai_donbot/joint_states" />
-    </node>
-
-    <arg name="gui" default="False"/>
-    <node pkg="giskardpy" type="giskard_trees.py" name="giskard" output="screen">
-        <param name="path_to_data_folder" value="$(find giskardpy)/data" />
-        <param name="enable_gui" value="$(arg gui)"/>
-        <rosparam command="load" file="$(find giskardpy)/config/donbot.yaml" />
-	    <remap from="/joint_states" to="/iai_donbot/joint_states" />
-    </node>
-
-    <node pkg="giskardpy" type="interactive_marker.py" name="giskard_interactive_marker" output="screen">
-        <rosparam param="enable_self_collision">False</rosparam>
-        <rosparam param="interactive_marker_chains">
-            - [odom, base_footprint]
-            - [odom, gripper_tool_frame]
-        </rosparam>
-    </node>
-
-    <!-- convert joint states to TF transforms for rviz, etc -->
-    <node pkg="robot_state_publisher" name="robot_state_publisher" type="robot_state_publisher"
-        respawn="false" output="screen">
-        <remap from="/joint_states" to="/iai_donbot/joint_states" />
-    </node>
-
-    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find iai_donbot_unreal)/rviz_config/iai_donbot.rviz" />
-
-    <!-- camera 2D, 3D-->
-    <!--include file="$(find unreal_vision_bridge)/launch/iai_donbot_unreal_vision_bridge.launch" /-->
-
+<launch>    
     <!-- upload map-->
     <arg name="navigation_map" default="$(find iai_refills_lab)/maps/refills_lab.yaml" />
     <node name="map_server" pkg="map_server" type="map_server" args="$(arg navigation_map)" />
@@ -56,8 +10,8 @@
         <param name="odom_frame_id" value="odom"/>
         <param name="global_frame_id" value="map"/>
 
-        <param name="initial_pose_x" value="6.08"/>
-        <param name="initial_pose_y" value="4.45"/>
+        <param name="initial_pose_x" value="5.12"/>
+        <param name="initial_pose_y" value="6.85"/>
         <param name="initial_pose_a" value="0.0"/>
         <param name="initial_cov_xx" value="0.0"/>
         <param name="initial_cov_yy" value="0.0"/>
@@ -95,5 +49,4 @@
         <param name="laser_min_range" value="0.1"/>
         <param name="laser_max_range" value="30.0"/>
     </node>
-
-</launch>
+</launch>  
